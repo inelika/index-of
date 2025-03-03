@@ -1,15 +1,10 @@
 const paragraph = "the quiek brown fox jumps over the lazy dog. If the dog barked, was a really lazy?";
 const searchTerm = "dog";
-function findOccurrences(text, word, startIndex = 0, indices = []) {
-  const lowerText = text.toLowerCase();
-  const lowerWord = word.toLowerCase();
-
-  let index = lowerText.indexOf(lowerWord, startIndex);
+function findOccurrences(text, word, startIndex = 0) {
+  let index = text.indexOf(word, startIndex);
   if (index !== -1) {
-      indices.push(index);
-      return findOccurrences(text, word, index + word.length, indices);
+      console.log(`Find: "${word}" at index ${index}`);
+      findOccurrences(text, word, index + word.length); 
   }
-  return indices;
 }
-const occurrences = findOccurrences(paragraph, searchTerm);
-console.log(occurrences); 
+findOccurrences(paragraph, searchTerm);
